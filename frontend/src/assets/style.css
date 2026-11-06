@@ -1,0 +1,1379 @@
+/* =========================================================
+   VOICE SCAM AI — GLOBAL DESIGN SYSTEM
+========================================================= */
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap");
+
+/* =========================================================
+   RESET
+========================================================= */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+
+  font-family:
+    "Inter",
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+
+  background: #f4f7fb;
+  color: #172033;
+
+  -webkit-font-smoothing: antialiased;
+}
+
+button,
+input,
+select,
+textarea {
+  font-family: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+
+/* =========================================================
+   APP LAYOUT
+========================================================= */
+
+.app-layout {
+  display: flex;
+  min-height: 100vh;
+
+  background:
+    radial-gradient(
+      circle at 85% 0%,
+      rgba(37, 99, 235, 0.08),
+      transparent 30%
+    ),
+    #f4f7fb;
+}
+
+
+/* =========================================================
+   SIDEBAR
+========================================================= */
+
+.sidebar {
+  position: fixed;
+
+  left: 0;
+  top: 0;
+  bottom: 0;
+
+  width: 235px;
+
+  display: flex;
+  flex-direction: column;
+
+  padding: 26px 16px;
+
+  background:
+    linear-gradient(
+      180deg,
+      #07152f 0%,
+      #0d2250 50%,
+      #1746b7 100%
+    );
+
+  color: white;
+
+  box-shadow:
+    8px 0 30px rgba(15, 23, 42, 0.14);
+
+  z-index: 1000;
+}
+
+
+/* Brand */
+
+.sidebar-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  padding: 8px 12px 28px;
+
+  font-size: 22px;
+  font-weight: 800;
+}
+
+.sidebar-brand span {
+  color: #60a5fa;
+}
+
+
+/* Navigation */
+
+.sidebar nav {
+  width: 100%;
+}
+
+.sidebar ul {
+  padding: 0;
+  margin: 0;
+
+  list-style: none;
+}
+
+.sidebar li {
+  list-style: none;
+}
+
+.sidebar a {
+  display: flex;
+  align-items: center;
+
+  gap: 12px;
+
+  width: 100%;
+
+  margin-bottom: 7px;
+  padding: 13px 14px;
+
+  border-radius: 12px;
+
+  color: rgba(255, 255, 255, 0.75);
+
+  font-size: 14px;
+  font-weight: 600;
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.sidebar a:hover {
+  background: rgba(255, 255, 255, 0.11);
+
+  color: white;
+
+  transform: translateX(3px);
+}
+
+.sidebar a.active {
+  background: rgba(255, 255, 255, 0.16);
+
+  color: white;
+
+  box-shadow:
+    inset 3px 0 #60a5fa;
+}
+
+.sidebar .logout {
+  margin-top: auto;
+}
+
+
+/* =========================================================
+   MAIN CONTENT
+========================================================= */
+
+.main-content {
+  width: calc(100% - 235px);
+
+  min-height: 100vh;
+
+  margin-left: 235px;
+
+  padding: 25px 30px 50px;
+}
+
+
+/* =========================================================
+   TOPBAR
+========================================================= */
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  min-height: 70px;
+
+  margin-bottom: 25px;
+  padding: 0 24px;
+
+  background: rgba(255, 255, 255, 0.92);
+
+  border: 1px solid #e4eaf2;
+
+  border-radius: 18px;
+
+  box-shadow:
+    0 8px 30px rgba(15, 23, 42, 0.06);
+
+  backdrop-filter: blur(12px);
+}
+
+
+/* =========================================================
+   DASHBOARD
+========================================================= */
+
+.dashboard-container {
+  width: 100%;
+  max-width: 1500px;
+
+  margin: 0 auto;
+}
+
+.dashboard-title {
+  margin: 5px 0 25px;
+
+  font-size: 32px;
+  line-height: 1.2;
+
+  font-weight: 800;
+
+  letter-spacing: -0.8px;
+
+  color: #111827;
+}
+
+
+/* =========================================================
+   STAT CARDS
+========================================================= */
+
+.stats-container {
+  display: grid;
+
+  grid-template-columns:
+    repeat(4, minmax(0, 1fr));
+
+  gap: 18px;
+
+  margin-bottom: 25px;
+}
+
+.stats-card,
+.stat-card {
+  position: relative;
+
+  overflow: hidden;
+
+  padding: 22px;
+
+  background: white;
+
+  border: 1px solid #e5eaf1;
+
+  border-radius: 18px;
+
+  box-shadow:
+    0 8px 25px rgba(15, 23, 42, 0.055);
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.stats-card:hover,
+.stat-card:hover {
+  transform: translateY(-3px);
+
+  box-shadow:
+    0 15px 35px rgba(15, 23, 42, 0.10);
+}
+
+.stats-card::after,
+.stat-card::after {
+  content: "";
+
+  position: absolute;
+
+  width: 100px;
+  height: 100px;
+
+  right: -40px;
+  top: -40px;
+
+  border-radius: 50%;
+
+  background: rgba(37, 99, 235, 0.07);
+}
+
+.stats-card h3,
+.stat-card h3 {
+  position: relative;
+
+  margin: 0 0 8px;
+
+  font-size: 13px;
+  font-weight: 600;
+
+  color: #64748b;
+
+  z-index: 1;
+}
+
+.stats-card .value,
+.stat-card .value {
+  position: relative;
+
+  font-size: 30px;
+  font-weight: 800;
+
+  color: #172033;
+
+  z-index: 1;
+}
+
+
+/* =========================================================
+   COMMON CARD DESIGN
+========================================================= */
+
+.chart-card,
+.analysis-card,
+.result-card,
+.upload-card,
+.live-recorder-card,
+.smart-detector-card {
+  margin-bottom: 25px;
+
+  padding: 25px;
+
+  background: rgba(255, 255, 255, 0.96);
+
+  border: 1px solid #e5eaf1;
+
+  border-radius: 20px;
+
+  box-shadow:
+    0 10px 35px rgba(15, 23, 42, 0.055);
+
+  transition:
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
+}
+
+.chart-card:hover,
+.analysis-card:hover,
+.upload-card:hover,
+.live-recorder-card:hover,
+.smart-detector-card:hover {
+  box-shadow:
+    0 15px 40px rgba(15, 23, 42, 0.08);
+}
+
+.chart-card h2,
+.analysis-card h2,
+.result-card h2,
+.upload-card h2,
+.live-recorder-card h2 {
+  color: #172033;
+}
+
+
+/* =========================================================
+   UPLOAD AUDIO
+========================================================= */
+
+.upload-box {
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+
+  min-height: 300px;
+
+  padding: 35px;
+
+  text-align: center;
+
+  border: 2px dashed #60a5fa;
+
+  border-radius: 18px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #f8fbff,
+      #eef6ff
+    );
+
+  transition:
+    border-color 0.2s ease,
+    background 0.2s ease;
+}
+
+.upload-box:hover {
+  border-color: #2563eb;
+
+  background: #eff6ff;
+}
+
+.upload-box h3 {
+  margin: 12px 0 7px;
+
+  font-size: 20px;
+
+  color: #2563eb;
+}
+
+.upload-box p {
+  color: #64748b;
+
+  line-height: 1.6;
+}
+
+
+/* File input */
+
+.upload-box input[type="file"] {
+  max-width: 100%;
+
+  margin-top: 12px;
+
+  padding: 8px;
+
+  border-radius: 8px;
+}
+
+
+/* =========================================================
+   BUTTONS
+========================================================= */
+
+.analyze-btn {
+  border: none;
+
+  padding: 12px 22px;
+
+  border-radius: 11px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #2563eb,
+      #06b6d4
+    );
+
+  color: white;
+
+  font-size: 14px;
+  font-weight: 700;
+
+  box-shadow:
+    0 7px 18px rgba(37, 99, 235, 0.24);
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    opacity 0.2s ease;
+}
+
+.analyze-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 11px 25px rgba(37, 99, 235, 0.30);
+}
+
+.analyze-btn:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.analyze-btn:disabled {
+  opacity: 0.55;
+
+  cursor: not-allowed;
+}
+
+
+/* =========================================================
+   LIVE RECORDER
+========================================================= */
+
+.live-recorder-card {
+  position: relative;
+
+  overflow: hidden;
+
+  background:
+    radial-gradient(
+      circle at 90% 0%,
+      rgba(37, 99, 235, 0.10),
+      transparent 35%
+    ),
+    white;
+}
+
+.live-recorder-card h2 {
+  margin-top: 0;
+}
+
+
+/* Recording status */
+
+.recording-active {
+  animation:
+    recordingPulse 1.5s infinite;
+}
+
+@keyframes recordingPulse {
+  0% {
+    box-shadow:
+      0 0 0 0 rgba(239, 68, 68, 0.30);
+  }
+
+  70% {
+    box-shadow:
+      0 0 0 12px rgba(239, 68, 68, 0);
+  }
+
+  100% {
+    box-shadow:
+      0 0 0 0 rgba(239, 68, 68, 0);
+  }
+}
+
+
+/* =========================================================
+   RECORDING WAVEFORM
+========================================================= */
+
+.waveform {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 4px;
+
+  height: 70px;
+
+  margin: 20px 0;
+}
+
+.waveform span {
+  width: 4px;
+
+  height: 20px;
+
+  border-radius: 10px;
+
+  background: #2563eb;
+
+  animation:
+    waveform 1s ease-in-out infinite;
+}
+
+.waveform span:nth-child(2) {
+  animation-delay: 0.1s;
+}
+
+.waveform span:nth-child(3) {
+  animation-delay: 0.2s;
+}
+
+.waveform span:nth-child(4) {
+  animation-delay: 0.3s;
+}
+
+.waveform span:nth-child(5) {
+  animation-delay: 0.4s;
+}
+
+.waveform span:nth-child(6) {
+  animation-delay: 0.3s;
+}
+
+.waveform span:nth-child(7) {
+  animation-delay: 0.2s;
+}
+
+@keyframes waveform {
+  0%,
+  100% {
+    transform: scaleY(0.5);
+  }
+
+  50% {
+    transform: scaleY(1.8);
+  }
+}
+
+
+/* =========================================================
+   PROGRESS BAR
+========================================================= */
+
+.progress-bar {
+  width: 100%;
+
+  height: 9px;
+
+  margin: 15px 0;
+
+  overflow: hidden;
+
+  border-radius: 999px;
+
+  background: #e5e7eb;
+}
+
+.progress-bar-fill {
+  height: 100%;
+
+  border-radius: inherit;
+
+  background:
+    linear-gradient(
+      90deg,
+      #2563eb,
+      #06b6d4
+    );
+
+  transition: width 0.25s ease;
+}
+
+
+/* =========================================================
+   RESULT
+========================================================= */
+
+.result-card {
+  position: relative;
+
+  overflow: hidden;
+}
+
+.result-card hr {
+  margin: 15px 0;
+
+  border: none;
+
+  border-top: 1px solid #e5e7eb;
+}
+
+.result-card p {
+  line-height: 1.7;
+}
+
+
+/* =========================================================
+   STATUS BADGES
+========================================================= */
+
+.status-badge,
+.risk-badge {
+  display: inline-flex;
+
+  align-items: center;
+
+  padding: 7px 13px;
+
+  border-radius: 999px;
+
+  font-size: 12px;
+
+  font-weight: 700;
+}
+
+.status-scam {
+  color: #dc2626;
+}
+
+.status-genuine {
+  color: #16a34a;
+}
+
+.risk-high {
+  background: #fee2e2;
+
+  color: #dc2626;
+}
+
+.risk-medium {
+  background: #fef3c7;
+
+  color: #d97706;
+}
+
+.risk-low {
+  background: #dcfce7;
+
+  color: #16a34a;
+}
+
+
+/* =========================================================
+   KEYWORDS
+========================================================= */
+
+.keyword-container {
+  display: flex;
+
+  flex-wrap: wrap;
+
+  gap: 8px;
+
+  margin-top: 10px;
+}
+
+.keyword {
+  padding: 7px 12px;
+
+  border-radius: 999px;
+
+  background: #eff6ff;
+
+  color: #2563eb;
+
+  font-size: 12px;
+
+  font-weight: 700;
+}
+
+
+/* =========================================================
+   HISTORY
+========================================================= */
+
+.history-container {
+  width: 100%;
+}
+
+.history-controls {
+  display: flex;
+
+  flex-wrap: wrap;
+
+  align-items: center;
+
+  gap: 12px;
+
+  margin-bottom: 25px;
+}
+
+.history-controls input,
+.history-controls select {
+  min-height: 42px;
+
+  padding: 9px 13px;
+
+  background: white;
+
+  border: 1px solid #d8dee8;
+
+  border-radius: 10px;
+
+  color: #334155;
+
+  outline: none;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.history-controls input:focus,
+.history-controls select:focus {
+  border-color: #2563eb;
+
+  box-shadow:
+    0 0 0 3px rgba(37, 99, 235, 0.10);
+}
+
+.history-card {
+  margin-bottom: 20px;
+
+  padding: 25px;
+
+  background: white;
+
+  border: 1px solid #e5eaf1;
+
+  border-radius: 18px;
+
+  box-shadow:
+    0 8px 25px rgba(15, 23, 42, 0.05);
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.history-card:hover {
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 14px 35px rgba(15, 23, 42, 0.09);
+}
+
+.history-card audio {
+  width: 100%;
+
+  max-width: 500px;
+}
+
+
+/* =========================================================
+   AUDIO PLAYER
+========================================================= */
+
+audio {
+  border-radius: 12px;
+}
+
+audio::-webkit-media-controls-panel {
+  background: #eef4ff;
+}
+
+
+/* =========================================================
+   POPUP
+========================================================= */
+
+.scam-alert-overlay {
+  position: fixed;
+
+  inset: 0;
+
+  z-index: 99999;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  padding: 20px;
+
+  background:
+    rgba(15, 23, 42, 0.68);
+
+  backdrop-filter: blur(8px);
+
+  animation: fadeIn 0.2s ease;
+}
+
+.scam-alert-box {
+  width: min(620px, 95vw);
+
+  max-height: 90vh;
+
+  overflow-y: auto;
+
+  padding: 35px;
+
+  background: white;
+
+  border-radius: 22px;
+
+  box-shadow:
+    0 30px 80px rgba(0, 0, 0, 0.28);
+
+  animation:
+    popupIn 0.25s ease;
+}
+
+.scam-alert-box h1 {
+  margin-top: 0;
+
+  text-align: center;
+
+  font-size: 27px;
+
+  font-weight: 800;
+}
+
+.scam-alert-box h2 {
+  text-align: center;
+
+  font-size: 17px;
+
+  color: #334155;
+}
+
+.scam-alert-box h3 {
+  margin-top: 20px;
+
+  text-align: center;
+}
+
+.scam-alert-box li {
+  margin-bottom: 10px;
+
+  line-height: 1.5;
+}
+
+@keyframes popupIn {
+  from {
+    opacity: 0;
+
+    transform:
+      translateY(15px)
+      scale(0.97);
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      translateY(0)
+      scale(1);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+
+/* =========================================================
+   AI PIPELINE
+========================================================= */
+
+.analysis-card {
+  overflow: hidden;
+}
+
+.analysis-step {
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  min-height: 60px;
+
+  margin-bottom: 12px;
+
+  padding: 15px 18px;
+
+  background:
+    linear-gradient(
+      90deg,
+      #f8fbff,
+      #eef5ff
+    );
+
+  border: 1px solid #e4ebf5;
+
+  border-radius: 13px;
+
+  transition: all 0.2s ease;
+}
+
+.analysis-step:hover {
+  transform: translateX(3px);
+
+  border-color: #bfdbfe;
+}
+
+
+/* =========================================================
+   TABLES
+========================================================= */
+
+table {
+  width: 100%;
+
+  border-collapse: collapse;
+
+  overflow: hidden;
+
+  background: white;
+
+  border-radius: 14px;
+}
+
+th,
+td {
+  padding: 13px 15px;
+
+  text-align: left;
+
+  border-bottom: 1px solid #edf0f4;
+}
+
+th {
+  background: #f8fafc;
+
+  color: #475569;
+
+  font-size: 13px;
+}
+
+
+/* =========================================================
+   FORM ELEMENTS
+========================================================= */
+
+input,
+select,
+textarea {
+  outline: none;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: #2563eb;
+}
+
+
+/* =========================================================
+   SCROLLBAR
+========================================================= */
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #eef2f7;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #b8c2d1;
+
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 1200px) {
+  .stats-container {
+    grid-template-columns:
+      repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 1000px) {
+  .stats-container {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 800px) {
+  .sidebar {
+    width: 75px;
+
+    padding: 20px 9px;
+  }
+
+  .sidebar-brand {
+    justify-content: center;
+
+    padding-left: 0;
+    padding-right: 0;
+
+    font-size: 0;
+  }
+
+  .sidebar a {
+    justify-content: center;
+
+    padding: 13px 8px;
+
+    font-size: 0;
+  }
+
+  .main-content {
+    width: calc(100% - 75px);
+
+    margin-left: 75px;
+
+    padding: 18px;
+  }
+
+  .dashboard-title {
+    font-size: 26px;
+  }
+}
+
+@media (max-width: 600px) {
+  .sidebar {
+    display: none;
+  }
+
+  .main-content {
+    width: 100%;
+
+    margin-left: 0;
+
+    padding: 15px;
+  }
+
+  .stats-container {
+    grid-template-columns: 1fr;
+  }
+
+  .dashboard-title {
+    font-size: 24px;
+  }
+
+  .chart-card,
+  .analysis-card,
+  .result-card,
+  .upload-card,
+  .live-recorder-card {
+    padding: 18px;
+  }
+
+  .upload-box {
+    min-height: 250px;
+
+    padding: 25px 15px;
+  }
+
+  .scam-alert-box {
+    padding: 25px 20px;
+  }
+
+  .scam-alert-box h1 {
+    font-size: 22px;
+  }
+
+  .history-controls {
+    flex-direction: column;
+
+    align-items: stretch;
+  }
+
+  .history-controls input,
+  .history-controls select {
+    width: 100%;
+  }
+}
+/* =========================================================
+   DARK MODE
+========================================================= */
+
+body.dark-mode {
+  background: #0f172a;
+  color: #e5e7eb;
+}
+
+body.dark-mode .app-layout {
+  background:
+    radial-gradient(
+      circle at 85% 0%,
+      rgba(37, 99, 235, 0.15),
+      transparent 30%
+    ),
+    #0f172a;
+}
+
+/* Main content */
+
+body.dark-mode .main-content {
+  background: transparent;
+}
+
+body.dark-mode .dashboard-title {
+  color: #f8fafc;
+}
+
+/* Topbar */
+
+body.dark-mode .topbar {
+  background: rgba(30, 41, 59, 0.92);
+  border-color: #334155;
+  color: #f8fafc;
+}
+
+/* Cards */
+
+body.dark-mode .chart-card,
+body.dark-mode .analysis-card,
+body.dark-mode .result-card,
+body.dark-mode .upload-card,
+body.dark-mode .live-recorder-card,
+body.dark-mode .smart-detector-card,
+body.dark-mode .stats-card,
+body.dark-mode .stat-card,
+body.dark-mode .history-card {
+  background: #1e293b;
+  border-color: #334155;
+  color: #e5e7eb;
+}
+
+/* Card headings */
+
+body.dark-mode .chart-card h2,
+body.dark-mode .analysis-card h2,
+body.dark-mode .result-card h2,
+body.dark-mode .upload-card h2,
+body.dark-mode .live-recorder-card h2,
+body.dark-mode .stats-card h3,
+body.dark-mode .stat-card h3 {
+  color: #f8fafc;
+}
+
+/* Stat values */
+
+body.dark-mode .stats-card .value,
+body.dark-mode .stat-card .value {
+  color: #f8fafc;
+}
+
+/* Paragraphs */
+
+body.dark-mode p {
+  color: #cbd5e1;
+}
+
+/* Upload box */
+
+body.dark-mode .upload-box {
+  background:
+    linear-gradient(
+      135deg,
+      #172554,
+      #1e3a5f
+    );
+
+  border-color: #3b82f6;
+}
+
+body.dark-mode .upload-box:hover {
+  background: #1e3a5f;
+}
+
+body.dark-mode .upload-box h3 {
+  color: #60a5fa;
+}
+
+/* Analysis steps */
+
+body.dark-mode .analysis-step {
+  background:
+    linear-gradient(
+      90deg,
+      #172033,
+      #1e293b
+    );
+
+  border-color: #334155;
+}
+
+body.dark-mode .analysis-step:hover {
+  border-color: #3b82f6;
+}
+
+/* History controls */
+
+body.dark-mode .history-controls input,
+body.dark-mode .history-controls select {
+  background: #1e293b;
+  border-color: #475569;
+  color: #f8fafc;
+}
+
+body.dark-mode .history-controls input::placeholder {
+  color: #94a3b8;
+}
+
+/* Inputs */
+
+body.dark-mode input,
+body.dark-mode select,
+body.dark-mode textarea {
+  background: #1e293b;
+  color: #f8fafc;
+  border-color: #475569;
+}
+
+/* Keywords */
+
+body.dark-mode .keyword {
+  background: #172554;
+  color: #60a5fa;
+}
+
+/* Result divider */
+
+body.dark-mode .result-card hr {
+  border-top-color: #334155;
+}
+
+/* Tables */
+
+body.dark-mode table {
+  background: #1e293b;
+  color: #e5e7eb;
+}
+
+body.dark-mode th {
+  background: #0f172a;
+  color: #cbd5e1;
+}
+
+body.dark-mode td {
+  border-bottom-color: #334155;
+}
+
+/* Audio */
+
+body.dark-mode audio::-webkit-media-controls-panel {
+  background: #334155;
+}
+
+/* Scrollbar */
+
+body.dark-mode ::-webkit-scrollbar-track {
+  background: #1e293b;
+}
+
+body.dark-mode ::-webkit-scrollbar-thumb {
+  background: #475569;
+}
+
+/* Popup */
+
+body.dark-mode .scam-alert-box {
+  background: #1e293b;
+  color: #e5e7eb;
+}
+
+body.dark-mode .scam-alert-box h2,
+body.dark-mode .scam-alert-box h3 {
+  color: #f8fafc;
+}
+
+body.dark-mode .scam-alert-box li {
+  color: #cbd5e1;
+}
